@@ -1,7 +1,8 @@
 .idea/
 *.iml
-lib/
 node_modules/
 .npmignore
 .npmrc
-dist/
+src/
+*.tgz
+tsconfig.json
