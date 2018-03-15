@@ -7,9 +7,9 @@
  * @param {boolean} equalNaN Whether to compare NaN’s as equal.
  *                  If true, when a is NaN and b is NaN they will be considered equal.
  * @returns {boolean} Returns true if both a and b are considered to be close,
- *                    that is absolute(a - b) <= (atol + rtol * absolute(b)).
+ *                    that is abs(a - b) <= max(rtol * max(abs(a), abs(b)), atol)
  */
-export function isClose(a: number, b: number, rtol = 1e-05, atol = 1e-08, equalNaN = false): boolean {
+export function isClose(a: number, b: number, rtol = 1e-09, atol = 0.0, equalNaN = false): boolean {
     return (
             equalNaN && isNaN(a) && isNaN(b)
         )
@@ -17,6 +17,6 @@ export function isClose(a: number, b: number, rtol = 1e-05, atol = 1e-08, equalN
             a === b
         )
         || (
-            Math.abs(a - b) <= atol + rtol * Math.abs(b)
+            Math.abs(a - b) <= Math.max(rtol * Math.max(Math.abs(a), Math.abs(b)), atol)
         );
 }

@@ -8,15 +8,15 @@ describe('isClose function test', () => {
         expect(result).to.equal(true);
     });
     it('should return true for slightly different values', () => {
-        const result = isClose(1.0, 1.00001);
+        const result = isClose(1.0, 1.0000000001);
         expect(result).to.equal(true);
     });
     it('should return false for sufficiently different values', () => {
-        const result = isClose(1.0, 1.0001);
+        const result = isClose(1.0, 1.000000001);
         expect(result).to.equal(false);
     });
     it('should return true for slightly different large values', () => {
-        const result = isClose(1e10, 1.00001e10);
+        const result = isClose(1e10, 1.0000000001e10);
         expect(result).to.equal(true);
     });
     it('should return false for different small values', () => {
@@ -40,11 +40,11 @@ describe('isClose function test', () => {
         expect(result).to.equal(false);
     });
     it('should return true when relative tolerance is met', () => {
-        const result = isClose(1100, 1000, 0.1, 0);
+        const result = isClose(1111.1111111111111, 1000, 0.1, 0);
         expect(result).to.equal(true);
     });
     it('should return false when relative tolerance is breached', () => {
-        const result = isClose(1100.000001, 1000, 0.1, 0);
+        const result = isClose(1111.1111111111112, 1000, 0.1, 0);
         expect(result).to.equal(false);
     });
 });
