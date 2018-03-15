@@ -67,4 +67,24 @@ describe('isClose function test', () => {
         const result = isClose(-Infinity, -Number.MAX_VALUE);
         expect(result).to.equal(false);
     });
+    it('should return [true, false] when two arrays with appropriate values is supplied', () => {
+        const result = isClose([1, 1], [1.0000000001, 1.000000001]);
+        expect(result.length).to.equal(2);
+        expect(result[0]).to.equal(true);
+        expect(result[1]).to.equal(false);
+    });
+    it('should return [true, false, undefined] when two different sized  with appropriate values is supplied', () => {
+        const result = isClose([1e10, 1e-7, 2], [1.0000000001e10, 1e-8]);
+        expect(result.length).to.equal(3);
+        expect(result[0]).to.equal(true);
+        expect(result[1]).to.equal(false);
+        expect(result[2]).to.equal(undefined);
+    });
+    it('should return [true, false, undefined] when two different sized arrays with appropriate values is supplied', () => {
+        const result = isClose([1e-7, 1e10], [1e-8, 1.0000000001e10, 1]);
+        expect(result.length).to.equal(3);
+        expect(result[0]).to.equal(false);
+        expect(result[1]).to.equal(true);
+        expect(result[2]).to.equal(undefined);
+    });
 });
