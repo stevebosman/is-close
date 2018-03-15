@@ -1,7 +1,7 @@
 /**
  * Check if a is approximately equal to b.
  * @param {number} a First value to compare
- * @param {number} b second value to compare
+ * @param {number} b Second value to compare
  * @param {number} rtol The relative tolerance parameter
  * @param {number} atol The absolute tolerance parameter
  * @param {boolean} equalNan Whether to compare NaN’s as equal.

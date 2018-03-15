@@ -1,7 +1,7 @@
 {
   "name": "is-close",
-  "version": "1.0.1",
-  "description": "Check if two numbers are equal within a tolerance",
+  "version": "1.0.2",
+  "description": "Check if two numbers are equal within a given tolerance",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
