@@ -7,8 +7,12 @@ describe('isClose function test', () => {
         const result = isClose(1.0, 1.0);
         expect(result).to.equal(true);
     });
-    it('should return false for very different values', () => {
-        const result = isClose(1.0, 2.0);
+    it('should return true for slightly different values', () => {
+        const result = isClose(1.0, 1.00001);
+        expect(result).to.equal(true);
+    });
+    it('should return false for sufficiently different values', () => {
+        const result = isClose(1.0, 1.0001);
         expect(result).to.equal(false);
     });
     it('should return true for slightly different large values', () => {
@@ -23,7 +27,7 @@ describe('isClose function test', () => {
         const result = isClose(NaN, NaN);
         expect(result).to.equal(false);
     });
-    it('should return true for two NaNs when equalNan is true', () => {
+    it('should return true for two NaNs when equalNaN is true', () => {
         const result = isClose(NaN, NaN, undefined, undefined, true);
         expect(result).to.equal(true);
     });
