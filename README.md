@@ -44,9 +44,9 @@ npm install is-close --save
 ## Example Usage
 ```javascript
 var isClose = require("is-close");
-console.log(isClose.isClose(1e10, 1.000000001));
-console.log(isClose.isClose(1e10, 1.0000000001));
-console.log(isClose.isClose([1e10, 1e10], [1.000000001, 1.0000000001]));
+console.log(isClose.isClose(1e-7, 1e-8));
+console.log(isClose.isClose(1e10, 1.0000000001e10));
+console.log(isClose.isClose([1e-7, 1e10], [1e-8, 1.0000000001e10]));
 ```
 
 Output should be 
