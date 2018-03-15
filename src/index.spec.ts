@@ -47,4 +47,24 @@ describe('isClose function test', () => {
         const result = isClose(1111.1111111111112, 1000, 0.1, 0);
         expect(result).to.equal(false);
     });
+    it('should return true when one value is 0 and the other -0', () => {
+        const result = isClose(-0, 0);
+        expect(result).to.equal(true);
+    });
+    it('should return true when both values are Infinity', () => {
+        const result = isClose(Infinity, Infinity);
+        expect(result).to.equal(true);
+    });
+    it('should return false when one value is Infinity and the other is -Infinity', () => {
+        const result = isClose(Infinity, -Infinity);
+        expect(result).to.equal(false);
+    });
+    it('should return false when one value is Infinity and the other MAX_VALUE', () => {
+        const result = isClose(Infinity, Number.MAX_VALUE);
+        expect(result).to.equal(false);
+    });
+    it('should return false when one value is Infinity and the other -MAX_VALUE', () => {
+        const result = isClose(-Infinity, -Number.MAX_VALUE);
+        expect(result).to.equal(false);
+    });
 });

@@ -17,6 +17,10 @@ export function isClose(a: number, b: number, rtol = 1e-09, atol = 0.0, equalNaN
             a === b
         )
         || (
-            Math.abs(a - b) <= Math.max(rtol * Math.max(Math.abs(a), Math.abs(b)), atol)
+            a !== Infinity
+            && a !== -Infinity
+            && b !== Infinity
+            && b !== -Infinity
+            && Math.abs(a - b) <= Math.max(rtol * Math.max(Math.abs(a), Math.abs(b)), atol)
         );
 }
