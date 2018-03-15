@@ -29,20 +29,30 @@ npm install is-close --save
 ```
 
 ## Example Usage
+```javascript
+var isClose = require("is-close");
+console.log(isClose.isClose(1e10, 1.0001e10));
+console.log(isClose.isClose(1e10, 1.00001e10));
+```
+
+Output should be 
+```
+false
+true
+```
+
 ### TypeScript
 ```typescript
 import { isClose } from 'is-close';
-console.log(isClose(1.0, 1.0001))
+console.log(isClose(1.0, 1.0001));
+console.log(isClose(1.0, 1.00001));
 ```
 
-Output should be `false`
-
-```typescript
-import { isClose } from 'is-close';
-console.log(isClose(1.0, 1.00001))
+Output should be 
 ```
-
-Output should be `true`
+false
+true
+```
 
 ## License
 
