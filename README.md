@@ -4,7 +4,7 @@
 > 1. two numbers are equal within a given tolerance
 > 2. the values in two arrays of numbers are equal within a given tolerance
 
-## isClose(a, b, rtol, atol, equalNaN) ⇒ `boolean`&#124;`Array<boolean>`
+## isClose(a, b, rtol, atol, equalNaN, isCloseScaler) ⇒ `boolean`&#124;`Array<boolean>`
 Check if `a` is approximately equal to `b`.
 
 This check uses similar logic to [Python math.isClose](https://docs.python.org/3/library/math.html#math.isclose).
