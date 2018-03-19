@@ -87,22 +87,13 @@ describe('isClose function test', () => {
             expect(result).to.equal(false);
         });
     });
-    describe('calculate relative error using b as theoretical value - |a-b|/|b|', () => {
+    describe('calculate relative difference using a custom function', () => {
         it('should return true when relative tolerance is met (above)', () => {
-            const result = isClose(1010, 1000, 0.01, 0, undefined, IsCloseScalers.absB);
+            const result = isClose(1000, 1010.02506, 0.01, 0, undefined,
+                function (a: number, b: number): number {
+                    return (3 * a + b) / 4;
+                });
             expect(result).to.equal(true);
-        });
-        it('should return false when relative tolerance is breached (above)', () => {
-            const result = isClose(1010.0000000000001, 1000, 0.01, 0, undefined, IsCloseScalers.absB);
-            expect(result).to.equal(false);
-        });
-        it('should return true when relative tolerance is met (below)', () => {
-            const result = isClose(990, 1000, 0.01, 0, undefined, IsCloseScalers.absB);
-            expect(result).to.equal(true);
-        });
-        it('should return false when relative tolerance is breached (below)', () => {
-            const result = isClose(989.9999999999999, 1000, 0.01, 0, undefined, IsCloseScalers.absB);
-            expect(result).to.equal(false);
         });
     });
     describe('compute closeness for arrays', () => {
