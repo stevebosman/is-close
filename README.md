@@ -38,6 +38,24 @@ abs(a - b) <= max(rtol * max(abs(a), abs(b)), atol).
 | `equalNaN`       | `boolean [optional]` | Whether to compare NaNs as equal.<br/>[default = false] |
 | `isCloseScaler`  | `IsCloseScaler [optional]` | Method used to scale the absolute difference into a relative difference.<br/>[default = IsCloseScalers.maxAbsAOrB] |
 
+## `IsCloseScalers`
+### `maxAbsAOrB(number, number) => number`
+Relative difference scaling: Max(|a|,|b|)
+### `maxAOrB(number, number) => number`
+Relative difference scaling: Max(a,b)
+### `minAbsAOrB(number, number) => number`
+Relative difference scaling: Min(|a|,|b|)
+### `minAOrB(number, number) => number`
+Relative difference scaling: Min(a,b)
+### `meanAbs(number, number) => number`
+Relative difference scaling: Mean: (|a|+|b|)/2, using Welford's method
+### `mean(number, number) => number`
+Relative difference scaling: Mean: (a+b)/2, using Welford's method
+### `absA(number) => number`
+Relative error scaling: abs(a)
+### `absB(number, number) => number`
+Relative error scaling: abs(b)
+
 ## Installation 
 ```sh
 npm install is-close --save
@@ -46,9 +64,16 @@ npm install is-close --save
 ## Example Usage
 ```javascript
 var isClose = require("is-close");
+
+// Examples of checking relative difference between first two parameters
 console.log(isClose.isClose(1e-7, 1e-8));
 console.log(isClose.isClose(1e10, 1.0000000001e10));
 console.log(isClose.isClose([1e-7, 1e10], [1e-8, 1.0000000001e10]));
+
+// Examples of relative error relative to first parameter 
+// - note how result is not symmetric
+console.log(isClose.isClose(1.0, 0.9, 0.1, undefined, undefined, isClose.IsCloseScalers.absA));
+console.log(isClose.isClose(0.9, 1.0, 0.1, undefined, undefined, isClose.IsCloseScalers.absA));
 ```
 
 Output should be 
@@ -56,14 +81,23 @@ Output should be
 false
 true
 [false, true]
+true
+false
 ```
 
 ### TypeScript
 ```typescript
-import { isClose } from 'is-close';
+import { isClose, IsCloseScalers } from 'is-close';
+
+// Examples of checking relative difference between first two parameters
 console.log(isClose(1.0, 1.000000001));
 console.log(isClose(1.0, 1.0000000001));
 console.log(isClose([1.0, 1.0], [1.000000001, 1.0000000001]));
+
+// Examples of relative error relative to first parameter 
+// - note how result is not symmetric
+console.log(isClose(1.0, 0.9, 0.1, undefined, undefined, IsCloseScalers.absA));
+console.log(isClose(0.9, 1.0, 0.1, undefined, undefined, IsCloseScalers.absA));
 ```
 
 Output should be 
@@ -71,6 +105,8 @@ Output should be
 false
 true
 [false, true]
+true
+false
 ```
 
 ## License
