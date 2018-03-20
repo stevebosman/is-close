@@ -4,7 +4,7 @@
 > 1. two numbers are equal within a given tolerance
 > 2. the values in two arrays of numbers are equal within a given tolerance
 
-## isClose(a, b, rtol, atol, equalNaN, isCloseScaler) ⇒ `boolean`&#124;`Array<boolean>`
+## `isClose(a, b, rtol, atol, equalNaN, isCloseScaler) ⇒ boolean`&#124;`Array<boolean>`
 Check if `a` is approximately equal to `b`.
 
 This check uses similar logic to [Python math.isClose](https://docs.python.org/3/library/math.html#math.isclose).
@@ -38,22 +38,28 @@ abs(a - b) <= max(rtol * max(abs(a), abs(b)), atol).
 | `equalNaN`       | `boolean [optional]` | Whether to compare NaNs as equal.<br/>[default = false] |
 | `isCloseScaler`  | `IsCloseScaler [optional]` | Method used to scale the absolute difference into a relative difference.<br/>[default = IsCloseScalers.maxAbsAOrB] |
 
-## `IsCloseScalers`
-### `maxAbsAOrB(number, number) => number`
+## `IsCloseScalers#maxAbsAOrB(a, b) => number`
 Relative difference scaling: Max(|a|,|b|)
-### `maxAOrB(number, number) => number`
+
+## `IsCloseScalers#maxAOrB(a, b) => number`
 Relative difference scaling: Max(a,b)
-### `minAbsAOrB(number, number) => number`
+
+## `IsCloseScalers#minAbsAOrB(a, b) => number`
 Relative difference scaling: Min(|a|,|b|)
-### `minAOrB(number, number) => number`
+
+## `IsCloseScalers#minAOrB(a, b) => number`
 Relative difference scaling: Min(a,b)
-### `meanAbs(number, number) => number`
+
+## `IsCloseScalers#meanAbs(a, b) => number`
 Relative difference scaling: Mean: (|a|+|b|)/2, using Welford's method
-### `mean(number, number) => number`
+
+## `IsCloseScalers#mean(a, b) => number`
 Relative difference scaling: Mean: (a+b)/2, using Welford's method
-### `absA(number) => number`
+
+## `IsCloseScalers#absA(a) => number`
 Relative error scaling: abs(a)
-### `absB(number, number) => number`
+
+## `IsCloseScalers#absB(a, b) => number`
 Relative error scaling: abs(b)
 
 ## Installation 
