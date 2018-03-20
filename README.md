@@ -14,7 +14,6 @@ By default values are considered to be close if:
 abs(a - b) <= max(rtol * max(abs(a), abs(b)), atol).
 ```
                    
-**Kind**: global function  
 **Returns**: `boolean` - Returns true if both `a` and `b` are considered to be close.  
 
 | Parameter        | Type | Description |
@@ -39,28 +38,28 @@ abs(a - b) <= max(rtol * max(abs(a), abs(b)), atol).
 | `isCloseScaler`  | `IsCloseScaler [optional]` | Method used to scale the absolute difference into a relative difference.<br/>[default = IsCloseScalers.maxAbsAOrB] |
 
 ## `IsCloseScalers#maxAbsAOrB(a, b) => number`
-Relative difference scaling: Max(|a|,|b|)
+**Returns**: `number` - Relative difference scaling: Max(|a|,|b|)
 
 ## `IsCloseScalers#maxAOrB(a, b) => number`
-Relative difference scaling: Max(a,b)
+**Returns**: `number` - Relative difference scaling: Max(a,b)
 
 ## `IsCloseScalers#minAbsAOrB(a, b) => number`
-Relative difference scaling: Min(|a|,|b|)
+**Returns**: `number` - Relative difference scaling: Min(|a|,|b|)
 
 ## `IsCloseScalers#minAOrB(a, b) => number`
-Relative difference scaling: Min(a,b)
+**Returns**: `number` - Relative difference scaling: Min(a,b)
 
 ## `IsCloseScalers#meanAbs(a, b) => number`
-Relative difference scaling: Mean: (|a|+|b|)/2, using Welford's method
+**Returns**: `number` - Relative difference scaling: Mean: (|a|+|b|)/2, using Welford's method
 
 ## `IsCloseScalers#mean(a, b) => number`
-Relative difference scaling: Mean: (a+b)/2, using Welford's method
+**Returns**: `number` - Relative difference scaling: Mean: (a+b)/2, using Welford's method
 
 ## `IsCloseScalers#absA(a) => number`
-Relative error scaling: abs(a)
+**Returns**: `number` - Relative error scaling: abs(a)
 
 ## `IsCloseScalers#absB(a, b) => number`
-Relative error scaling: abs(b)
+**Returns**: `number` - Relative error scaling: abs(b)
 
 ## Installation 
 ```sh
